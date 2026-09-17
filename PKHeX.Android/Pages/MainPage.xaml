@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PKHeXAndroid.Pages.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="PKHeX Android">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="18" Spacing="14">
+            <Label
+                FontAttributes="Bold"
+                FontSize="28"
+                Text="PKHeX Android" />
+
+            <Label
+                FontSize="14"
+                Text="Phase 1 — PKHeX.Core save loader"
+                Opacity="0.7" />
+
+            <Button
+                Command="{Binding OpenCommand}"
+                Text="セーブデータを開く" />
+
+            <Button
+                Command="{Binding SaveCommand}"
+                Text="同じファイルへ保存" />
+
+            <ActivityIndicator
+                IsRunning="{Binding Busy}"
+                IsVisible="{Binding Busy}" />
+
+            <Border Padding="14">
+                <VerticalStackLayout Spacing="7">
+                    <Label FontAttributes="Bold" Text="セーブ情報" />
+                    <Grid ColumnDefinitions="95,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto" RowSpacing="6">
+                        <Label Grid.Row="0" Grid.Column="0" Text="ファイル" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding FileName}" LineBreakMode="TailTruncation" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Text="ゲーム" />
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding Game}" />
+
+                        <Label Grid.Row="2" Grid.Column="0" Text="主人公" />
+                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding Trainer}" />
+
+                        <Label Grid.Row="3" Grid.Column="0" Text="ID" />
+                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding IDs}" />
+
+                        <Label Grid.Row="4" Grid.Column="0" Text="所持金" />
+                        <Label Grid.Row="4" Grid.Column="1" Text="{Binding Money}" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Label FontAttributes="Bold" FontSize="20" Text="手持ち" />
+
+            <VerticalStackLayout
+                BindableLayout.ItemsSource="{Binding Party}"
+                Spacing="8">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="12">
+                            <Grid ColumnDefinitions="40,*" RowDefinitions="Auto,Auto">
+                                <Label
+                                    Grid.RowSpan="2"
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    Text="{Binding SlotText}"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    Grid.Column="1"
+                                    FontAttributes="Bold"
+                                    Text="{Binding DisplayName}" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    FontSize="14"
+                                    Text="{Binding Detail}"
+                                    Opacity="0.75" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+
+            <Label
+                FontSize="14"
+                Text="{Binding Status}"
+                Margin="0,6,0,16" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
