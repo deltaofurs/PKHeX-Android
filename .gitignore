@@ -1,0 +1,8 @@
+PKHeX/
+**/bin/
+**/obj/
+.vs/
+.idea/
+*.user
+*.suo
+.DS_Store
