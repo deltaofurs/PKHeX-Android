@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0-android</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>PKHeXAndroid</RootNamespace>
+    <UseMaui>true</UseMaui>
+    <SingleProject>true</SingleProject>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <ApplicationTitle>PKHeX Android</ApplicationTitle>
+    <ApplicationId>local.pkhex.android</ApplicationId>
+    <ApplicationDisplayVersion>0.1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+    <SupportedOSPlatformVersion>24.0</SupportedOSPlatformVersion>
+
+    <!-- 自分用APKを直接生成しやすくする -->
+    <AndroidPackageFormats>apk</AndroidPackageFormats>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Android非依存のPKHeX連携層。ここをSmokeTestsからも直接検証する。 -->
+    <ProjectReference Include="..\PKHeX.Android.Core\PKHeX.Android.Core.csproj" />
+  </ItemGroup>
+
+</Project>
